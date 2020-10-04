@@ -1,0 +1,53 @@
+[WARN] 4.1.7 Ensure that the certificate authorities file permissions are set to 644 or more restrictive (Scored)
+[INFO] 4.2 Kubelet
+[FAIL] 4.2.4 Ensure that the --read-only-port argument is set to 0 (Scored)
+[FAIL] 4.2.6 Ensure that the --protect-kernel-defaults argument is set to true (Scored)
+[WARN] 4.2.9 Ensure that the --event-qps argument is set to 0 or a level which ensures appropriate event capture (Not Scored)
+[FAIL] 4.2.10 Ensure that the --tls-cert-file and --tls-private-key-file arguments are set as appropriate (Scored)
+
+== Remediations ==
+4.1.7 audit test did not run: There are no tests
+4.2.4 If using a Kubelet config file, edit the file to set readOnlyPort to 0.
+If using command line arguments, edit the kubelet service file
+/etc/systemd/system/kubelet.service on each worker node and
+set the below parameter in KUBELET_SYSTEM_PODS_ARGS variable.
+--read-only-port=0
+Based on your system, restart the kubelet service. For example:
+systemctl daemon-reload
+systemctl restart kubelet.service
+
+4.2.6 If using a Kubelet config file, edit the file to set protectKernelDefaults: true.
+If using command line arguments, edit the kubelet service file
+/etc/systemd/system/kubelet.service on each worker node and
+set the below parameter in KUBELET_SYSTEM_PODS_ARGS variable.
+--protect-kernel-defaults=true
+Based on your system, restart the kubelet service. For example:
+systemctl daemon-reload
+systemctl restart kubelet.service
+
+4.2.9 If using a Kubelet config file, edit the file to set eventRecordQPS: to an appropriate level.
+If using command line arguments, edit the kubelet service file
+/etc/systemd/system/kubelet.service on each worker node and
+set the below parameter in KUBELET_SYSTEM_PODS_ARGS variable.
+Based on your system, restart the kubelet service. For example:
+systemctl daemon-reload
+systemctl restart kubelet.service
+
+4.2.10 If using a Kubelet config file, edit the file to set tlsCertFile to the location
+of the certificate file to use to identify this Kubelet, and tlsPrivateKeyFile
+to the location of the corresponding private key file.
+If using command line arguments, edit the kubelet service file
+/etc/systemd/system/kubelet.service on each worker node and
+set the below parameters in KUBELET_CERTIFICATE_ARGS variable.
+--tls-cert-file=<path/to/tls-certificate-file>
+--tls-private-key-file=<path/to/tls-key-file>
+Based on your system, restart the kubelet service. For example:
+systemctl daemon-reload
+systemctl restart kubelet.service
+
+
+== Summary ==
+18 checks PASS
+3 checks FAIL
+2 checks WARN
+0 checks INFO
