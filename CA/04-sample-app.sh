@@ -26,7 +26,7 @@ spec:
             memory: 512Mi
 EoF
 
-kubectl apply -f ~/environment/cluster-autoscaler/nginx.yaml
+kubectl apply -f nginx.yaml
 
 kubectl get deployment/nginx-to-scaleout
 echo "the requests/limits should force the CA"

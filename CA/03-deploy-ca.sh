@@ -12,6 +12,8 @@ export AUTOSCALER_VERSION=$(curl -s "https://api.github.com/repos/kubernetes/aut
 kubectl -n kube-system \
     set image deployment.apps/cluster-autoscaler \
     cluster-autoscaler=us.gcr.io/k8s-artifacts-prod/autoscaling/cluster-autoscaler:v${AUTOSCALER_VERSION}
-
-echo "watch the logs"
+echo "sleep 10"
+sleep 10
+echo "open another terminal"
+echo "watching the logs here"
 kubectl -n kube-system logs -f deployment/cluster-autoscaler 
