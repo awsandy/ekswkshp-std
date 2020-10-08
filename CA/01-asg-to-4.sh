@@ -9,8 +9,8 @@ export ASG_NAME=$(aws autoscaling describe-auto-scaling-groups --query "AutoScal
 aws autoscaling \
     update-auto-scaling-group \
     --auto-scaling-group-name ${ASG_NAME} \
-    --min-size 3 \
-    --desired-capacity 3 \
+    --min-size 2 \
+    --desired-capacity 2 \
     --max-size 4
 
 # Check new values
