@@ -17,3 +17,15 @@ kubectl completion bash >>  ~/.bash_completion
 echo 'export ALB_INGRESS_VERSION="v1.1.8"' >>  ~/.bash_profile
 .  ~/.bash_profile
 
+echo "Additional stuff"
+
+echo "helm"
+wget https://get.helm.sh/helm-v3.2.1-linux-amd64.tar.gz
+tar -zxvf helm-v3.2.1-linux-amd64.tar.gz
+sudo mv linux-amd64/helm /usr/local/bin/helm
+rm -rf helm-v3.2.1-linux-amd64.tar.gz linux-amd64
+echo "add a repo"
+helm repo add stable https://kubernetes-charts.storage.googleapis.com/
+echo "AWS EKS charts https://github.com/aws/eks-charts/tree/master/stable"
+helm repo add eks https://aws.github.io/eks-charts
+
