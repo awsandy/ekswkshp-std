@@ -35,7 +35,9 @@ kubectl scale --replicas=10 deployment/nginx-to-scaleout
 echo "sleep for 10"
 sleep 10
 kubectl get pods -l app=nginx -o wide
-kubectl -n kube-system logs -f deployment/cluster-autoscaler
+#kubectl -n kube-system logs -f deployment/cluster-autoscaler
+echo "circa 2m to scale out and extra pods running"
+echo "takes circa 15, to scale down - cooldown = 7.5m, ASG event 10m - complete 12m"
 echo "kubectl get pods -l app=nginx -o wide"
 echo "kubectl -n kube-system logs -f deployment/cluster-autoscaler"
 echo "kubectl get nodes"
