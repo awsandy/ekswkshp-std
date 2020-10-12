@@ -8,6 +8,6 @@ spec:
       containers:
       - name: siege
         image: schoolofdevops/loadtest:v1
-        command: ["siege",  "--concurrent=5", "--benchmark", "--time=10m", "http://php-apache"]
+        command: ["siege",  "--concurrent=20", "--benchmark", "--time=10m", "http://php-apache"]
       restartPolicy: Never
   backoffLimit: 4
