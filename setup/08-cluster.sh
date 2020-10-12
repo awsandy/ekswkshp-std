@@ -26,5 +26,5 @@ managedNodeGroups:
 secretsEncryption:
   keyARN: ${MASTER_ARN}
 EOF
-eksctl create cluster -f eksworkshop.yaml
+eksctl -v 4 create cluster -f eksworkshop.yaml
 
