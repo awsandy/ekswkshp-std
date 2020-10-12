@@ -11,14 +11,17 @@ eksctl delete iamserviceaccount \
 aws iam delete-policy \
   --policy-arn arn:aws:iam::${ACCOUNT_ID}:policy/k8s-asg-policy
 
-export ASG_NAME=$(aws autoscaling describe-auto-scaling-groups --query "AutoScalingGroups[? Tags[? (Key=='eks:cluster-name') && Value=='eksworkshop-eksctl']].AutoScalingGroupName" --output text)
 
-aws autoscaling \
-  update-auto-scaling-group \
-  --auto-scaling-group-name ${ASG_NAME} \
-  --min-size 3 \
-  --desired-capacity 3 \
-  --max-size 3
+aws eks update-nodegroup-config --cluster-name eksworkshop-eksctl --nodegroup-name nodegroup --scaling-config minSize=1,maxSize=3,desiredSize=2
+
+#export ASG_NAME=$(aws autoscaling describe-auto-scaling-groups --query "AutoScalingGroups[? Tags[? (Key=='eks:cluster-name') && Value=='eksworkshop-eksctl']].AutoScalingGroupName" --output text)
+
+#aws autoscaling \
+#  update-auto-scaling-group \
+#  --auto-scaling-group-name ${ASG_NAME} \
+#  --min-size 3 \
+#  --desired-capacity 3 \
+#  --max-size 3
 
 kubectl delete hpa,svc php-apache
 
@@ -28,12 +31,12 @@ kubectl delete deployment load-generator
 
 cd ~/environment
 
-rm -rf ~/environment/cluster-autoscaler
+#rm -rf ~/environment/cluster-autoscaler
 
-helm -n metrics uninstall metrics-server
+#helm -n metrics uninstall metrics-server
 
-kubectl delete ns metrics
+#kubectl delete ns metrics
 
-unset ASG_NAME
-unset AUTOSCALER_VERSION
-unset K8S_VERSION
+#unset ASG_NAME
+#unset AUTOSCALER_VERSION
+#unset K8S_VERSION
