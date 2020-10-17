@@ -1,0 +1,9 @@
+apiVersion: crd.k8s.amazonaws.com/v1alpha1
+kind: ENIConfig
+metadata:
+ name: eu-west-2a-pod-netconfig
+spec:
+ subnet: subnet-0ba53de29f55e27a7
+ securityGroups:
+ - sg-0c512af75061df355
+ - sg-0fea33d1f793681a6
