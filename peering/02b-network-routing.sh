@@ -1,5 +1,7 @@
 CLOUD9_NAME="cloud9-eksworkshop"
 CLUSTER="eksworkshop-eksctl"
+CLOUD9_NAME="eks-c9"
+CLUSTER="manamieksp"
 
 resp=`aws eks describe-cluster --name $CLUSTER`
 vpcid=`echo $resp | jq .cluster.resourcesVpcConfig.vpcId | tr -d '"'`
@@ -9,7 +11,7 @@ resp=`aws ec2 describe-instances --filter Name=tag:Name,Values=*${CLOUD9_NAME}*`
 c9vpcid=`echo $resp | jq .Reservations[0].Instances[0].VpcId | tr -d '"'`
 c9cidr=`aws ec2 describe-vpcs --vpc-ids $c9vpcid | jq .Vpcs[0].CidrBlock | tr -d '"'`
 
-pid=`aws ec2 describe-vpc-peering-connections | jq .VpcPeeringConnections[0].VpcPeeringConnectionId | tr -d '"'`
+pid=`aws ec2 describe-vpc-peering-connections --filters Name=status-code,Values=active | jq .VpcPeeringConnections[0].VpcPeeringConnectionId | tr -d '"'`
 
 eksrt=()
 echo "eks route tables"

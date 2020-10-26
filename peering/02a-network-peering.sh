@@ -1,5 +1,5 @@
-CLOUD9_NAME="cloud9-eksworkshop"
-CLUSTER="eksworkshop-eksctl"
+CLOUD9_NAME="eks-c9"
+CLUSTER="manamieksp"
 
 resp=`aws eks describe-cluster --name $CLUSTER`
 vpcid=`echo $resp | jq .cluster.resourcesVpcConfig.vpcId | tr -d '"'`
