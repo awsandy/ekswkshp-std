@@ -1,0 +1,1 @@
+kubectl run -i --rm --tty debug --image=amazon/aws-cli:latest -- s3 ls

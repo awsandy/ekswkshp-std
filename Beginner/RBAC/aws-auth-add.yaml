@@ -1,0 +1,4 @@
+data:
+  mapUsers: |
+    - userarn: arn:aws:iam::${ACCOUNT_ID}:user/rbac-user
+      username: rbac-user
