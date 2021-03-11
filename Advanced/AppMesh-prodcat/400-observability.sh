@@ -1,0 +1,13 @@
+echo "Console -> container insights - Cluster and Nodes"
+echo "logs:"
+echo "/aws/containerinsights/cluster-name/application"
+echo "/aws/containerinsights/cluster-name/dataplane"
+echo "/aws/containerinsights/cluster-name/hostNodegroup Container Logs"
+echo "/aws/containerinsights/cluster-name/performance"
+echo "/aws/eks/eksworkshop-eksctl/cluster"
+echo "fluent-bit-cloudwatch"
+echo "--------"
+echo "Container Insights - EKS Prometheus AppMesh"
+echo "--------"
+echo "XRay Trace/map"
+
