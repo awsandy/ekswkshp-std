@@ -1,4 +1,4 @@
-envsubst < ./deployment/fluentbit-config.yaml | kubectl apply -f -
+envsubst < eks-app-mesh-polyglot-demo/deployment/fluentbit-config.yaml | kubectl apply -f -
 echo "should see aws-loggining" 
 kubectl -n aws-observability get cm
 echo "get permissions to write to CW"

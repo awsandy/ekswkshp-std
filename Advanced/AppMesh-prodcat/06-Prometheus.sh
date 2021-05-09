@@ -4,6 +4,6 @@ echo "enable control plane logs"
 eksctl utils update-cluster-logging \
 	--enable-types all \
     --region ${AWS_REGION} \
-    --cluster eksworkshop-eksctl \
+    --cluster ${CLUSTER} \
     --approve
 echo "enable fargate loggining"
