@@ -12,7 +12,7 @@ eksctl create iamserviceaccount \
   --cluster ${CLUSTER} \
   --namespace appmesh-system \
   --name appmesh-controller \
-  --attach-policy-arn  arn:aws:iam::aws:policy/AWSCloudMapFullAccess,arn:aws:iam::aws:policy/AWSAppMeshFullAccess \
+  --attach-policy-arn  arn:aws:iam::aws:policy/AWSXRayDaemonWriteAccess,arn:aws:iam::aws:policy/AWSCloudMapFullAccess,arn:aws:iam::aws:policy/AWSAppMeshFullAccess \
   --override-existing-serviceaccounts \
   --approve
 
