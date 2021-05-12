@@ -1,4 +1,5 @@
 aws ecr get-login-password --region $AWS_REGION | docker login --username AWS --password-stdin $ACCOUNT_ID.dkr.ecr.$AWS_REGION.amazonaws.com
+cd eks-app-mesh-polyglot-demo
 PROJECT_NAME=eks-app-mesh-demo
 export APP_VERSION_2=2.0
 for app in catalog_detail; do
